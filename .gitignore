@@ -1,0 +1,4 @@
+*.swp
+.DS_STORE
+web_src_root
+deploy

@@ -1,0 +1,5 @@
+name: thermalspan
+description: website of Russell Bentley 
+rss: rss.xml
+link: thermalspan.github.io
+ignore: [".git/*"]
