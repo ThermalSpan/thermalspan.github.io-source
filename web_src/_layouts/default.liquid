@@ -5,17 +5,17 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width initial-scale=1">
-        {% if is_post %}
+        {% if title %}
         <title>{{ title }}</title>
         {% else %}
-        <title>Cobalt.rs Blog</title>
+        <title>ThermalSpan</title>
         {% endif %}
         <meta name="description" content="{{ description }}">
         <link rel="stylesheet" href="{{ "/css/style.css" | prepend: base_url}}">
         {% unless is_post %}
         <style>
         html { 
-          background: #000000 url(../images/nebula2.jpg) no-repeat center center fixed; 
+          background: #000000 url({{ base_url }}/images/nebula2.jpg) no-repeat center center fixed; 
           -webkit-background-size: cover;
           -moz-background-size: cover;
           -o-background-size: cover;
@@ -27,23 +27,23 @@
         {% endunless %}
     </head>
     <body>
-        {% unless is_post %}
+        {% if logo %}
         {% include '_includes/image_header.liquid' %}
-        {% endunless %}
+        {% endif %}
         <div id="menu" class="dark-div">
         <div id="menu-box">
             <ul>
                 <li>
-                    <a href="{{ base_url }}">Home</a>
+                    <a href="{{ base_url }}/index.html">Home</a>
                 </li>
                 <li>
-                    <a href="{{ base_url }}">Docs</a>
+                    <a href="{{ base_url }}/index.html">Docs</a>
                 </li>
                 <li>
-                    <a href="{{ base_url }}">Projects</a>
+                    <a href="{{ base_url }}/index.html">Projects</a>
                 </li>
                 <li>
-                    <a href="{{ base_url }}/contact/">Contact</a>
+                    <a href="{{ base_url }}/connect/index.html">Connect</a>
                 </li>
             </ul>
         </div>
