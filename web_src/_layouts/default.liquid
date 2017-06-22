@@ -24,7 +24,21 @@
           font-family: Times-Bold, Serif;
         }
         </style>
-        {% endunless %}
+    {% endunless %}
+
+  <style type="text/css">code{white-space: pre;}</style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css" /><script type="text/javascript">window.onload = function(){var mathElements = document.getElementsByClassName("math");
+  for (var i=0; i < mathElements.length; i++)
+  {
+   var texText = mathElements[i].firstChild
+   katex.render(texText.data, mathElements[i])
+  }}
+  </script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+
+
     </head>
     <body>
         {% if logo %}
@@ -50,11 +64,11 @@
         </div>
         <div class="full-div"> 
         <div id="content">
-            {% if is_post %}
-            {% include '_layouts/post.liquid' %}
-            {% else %}
+        {% if is_post %}
+            {% include "_layouts/post.liquid" %}
+        {% else %}
             {{ content }}
-            {% endif %}
+        {% endif %}
         </div>
         </div>
     </body>

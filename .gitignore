@@ -2,3 +2,5 @@
 .DS_STORE
 web_src_root
 deploy
+dependencies
+.build_state.json

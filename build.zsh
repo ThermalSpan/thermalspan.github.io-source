@@ -27,6 +27,30 @@ else
     esac
 fi
 
+# Clone, checkout, and build KaTeX
+col_echo "Checkout on KaTeX checkout ..." 3
+KATEX_SRC_DIR="./dependencies/KaTeX"
+KATEX_SRC_TAG="v0.7.1"
+if [ -e dependencies/KaTeX ]
+then
+    git -C $KATEX_SRC_DIR pull
+    git -C $KATEX_SRC_DIR checkout $KATEX_SRC_TAG
+else
+    git clone https://github.com/Khan/KaTeX.git $KATEX_SRC_DIR 
+    git -C $KATEX_SRC_DIR checkout $KATEX_SRC_TAG
+fi
+
+col_echo "Make KaTeX ..." 3
+make -C $KATEX_SRC_DIR
+
+col_echo "Copy over KaTeX to WEB_SRC_ROOT" 3
+ditto $KATEX_SRC_DIR/build $WEB_SRC_ROOT/static/KaTeX
+
+# Clone, checkout, and build posts
+https://github.com/ThermalSpan/posts.git
+col_echo "Checkout on posts checkout ..." 3
+
+
 col_echo "Copying over web sources ..." 3
 ditto $WEB_SRC $WEB_SRC_ROOT 
 
@@ -36,7 +60,7 @@ echo "{% assign title = \"thermalspan\" %}" >> $ENV_LIQUID
 echo "{% assign base_url = \"$BASE_URL\" %}" >> $ENV_LIQUID
 
 col_echo "Running Cobalt ..." 3
-cobalt build --source $WEB_SRC_ROOT --destination $RESULT_ROOT --config $WEB_SRC_ROOT/.cobalt.yml
+cobalt build --source $WEB_SRC_ROOT --destination $RESULT_ROOT --config $WEB_SRC_ROOT/.cobalt.yml --trace
 
 col_echo "Dittoing result to deploy dir ..." 3
 rm -rf $DEPLOY_DIR/*
