@@ -96,7 +96,6 @@ ditto $POSTS_SRC_DIR/build $WEB_SRC_ROOT
 
 col_echo "Generating env.liquid ..." 3
 rm -f $ENV_LIQUID
-echo "{% assign title = \"thermalspan\" %}" >> $ENV_LIQUID
 echo "{% assign base_url = \"$BASE_URL\" %}" >> $ENV_LIQUID
 
 col_echo "Running Cobalt ..." 3
