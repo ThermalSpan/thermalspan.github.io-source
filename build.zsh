@@ -80,7 +80,7 @@ then
     git -C $POSTS_SRC_DIR pull
     git -C $POSTS_SRC_DIR checkout $POSTS_SRC_BRANCH
 else
-    git clone ../pandoc-posts $POSTS_SRC_DIR 
+    git clone https://github.com/ThermalSpan/pandoc-posts.git $POSTS_SRC_DIR 
     git -C $POSTS_SRC_DIR checkout $POSTS_SRC_TAG
 fi
 
@@ -89,6 +89,29 @@ make -C $POSTS_SRC_DIR
 
 col_echo "Copy over Pandoc-Posts to WEB_SRC_ROOT" 3
 ditto $POSTS_SRC_DIR/build $WEB_SRC_ROOT
+
+##########################
+# Build Resume
+##########################
+
+# Clone, checkout, and build Resume
+col_echo "Checkout on resume checkout ..." 3
+RESUME_SRC_DIR="./dependencies/resume"
+RESUME_SRC_BRANCH="master"
+if [ -e dependencies/Resume ]
+then
+    git -C $RESUME_SRC_DIR pull
+    git -C $RESUME_SRC_DIR checkout $RESUME_SRC_BRANCH
+else
+    git clone https://github.com/ThermalSpan/resume.git $RESUME_SRC_DIR 
+    git -C $RESUME_SRC_DIR checkout $RESUME_SRC_TAG
+fi
+
+col_echo "Make Resume ..." 3
+make -C $RESUME_SRC_DIR
+
+col_echo "Copy over Resume to WEB_SRC_ROOT" 3
+ditto $RESUME_SRC_DIR/pdfs $WEB_SRC_ROOT/pdfs
 
 ##########################
 # Run Templater on Root Directory
