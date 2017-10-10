@@ -27,12 +27,16 @@
     {% endunless %}
 
   <style type="text/css">code{white-space: pre;}</style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.6.0/katex.min.css" /><script type="text/javascript">window.onload = function(){var mathElements = document.getElementsByClassName("math");
-  for (var i=0; i < mathElements.length; i++)
-  {
-   var texText = mathElements[i].firstChild
-   katex.render(texText.data, mathElements[i])
-  }}
+  <script src="{{ base_url }}/static/KaTeX/katex.js"></script>
+  <link rel="stylesheet" href="{{ base_url }}/static/KaTeX/katex.css" />
+  <script type="text/javascript">
+    window.onload = function() {
+        var math_display = document.getElementsByClassName("math");
+        for (var i=0; i < math_display.length; i++) {
+            var texText = math_display[i].firstChild
+            katex.render(texText.data, math_display[i])
+        }
+    }
   </script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
